@@ -4,9 +4,9 @@ from urllib import parse
 import pandas as pd
 import requests
 
-from cqu_jwc.config.config import config, Config
-from cqu_jwc.utils import check_user, log, check_output_path
-from cqu_jwc.version import __version__
+from cqu_cj.config.config import config, Config
+from cqu_cj.utils import check_user, log, check_output_path
+from cqu_cj.version import __version__
 
 
 def main():
@@ -40,11 +40,11 @@ def console_main():
     check_output_path()
 
     def parse_args() -> argparse.Namespace:
-        """Parse the command line arguments for the `cqu jwc` binary.
+        """Parse the command line arguments for the `cqu cj` binary.
 
         :return: Namespace with parsed arguments.
         """
-        parser = argparse.ArgumentParser(prog="jwc", description="第三方 重庆大学 成绩查询", )
+        parser = argparse.ArgumentParser(prog="cj", description="第三方 重庆大学 成绩查询", )
 
         parser.add_argument(
             "-v",

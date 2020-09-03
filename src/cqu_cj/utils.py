@@ -7,8 +7,8 @@ from pathlib import Path
 
 import requests
 
-from cqu_jwc.config.config import config
-from cqu_jwc.version import __version__
+from cqu_cj.config.config import config
+from cqu_cj.version import __version__
 
 ERROR_COUNT = 0
 

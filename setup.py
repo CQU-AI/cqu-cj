@@ -13,7 +13,7 @@ with (source_root / "README.md").open(encoding="utf-8") as f:
 with (source_root / "requirements.txt").open(encoding="utf8") as f:
     requirements = f.readlines()
 
-with (source_root / "src" / "cqu_jwc" / "version.py").open(
+with (source_root / "src" / "cqu_cj" / "version.py").open(
         "w", encoding="utf-8"
 ) as f:
     f.writelines(
@@ -25,12 +25,12 @@ with (source_root / "src" / "cqu_jwc" / "version.py").open(
     )
 
 setup(
-    name="cqu-jwc",
+    name="cqu-cj",
     version=version,
     description="第三方重庆大学成绩查询工具",
     author="CQU-AI",
     author_email="peter@mail.loopy.tech",
-    url="https://github.com/CQU-AI/cqu-jwc",
+    url="https://github.com/CQU-AI/cqu-cj",
     license="GPL License",
     packages=find_packages("src"),
     package_dir={"": "src"},
@@ -40,5 +40,5 @@ setup(
     python_requires=">=3.6",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    entry_points={"console_scripts": ["jwc=cqu_jwc:console_main", ]},
+    entry_points={"console_scripts": ["cj=cqu_cj:console_main", ]},
 )
