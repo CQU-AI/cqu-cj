@@ -1,5 +1,5 @@
 # CQU-JWC
-
+[![cqu-tool-bucket](https://img.shields.io/badge/CQU-%E9%87%8D%E5%BA%86%E5%A4%A7%E5%AD%A6%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%AE%A1%E5%88%92-blue)](https://github.com/topics/cqu-tool-bucket)
 ![Liscence](https://img.shields.io/github/license/CQU-AI/cqu-jwc)
 [![pypi](https://img.shields.io/pypi/v/cqu-jwc)](https://pypi.org/project/cqu-jwc/)
 ![download](https://pepy.tech/badge/cqu-jwc)
