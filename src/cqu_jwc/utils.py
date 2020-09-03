@@ -1,10 +1,14 @@
+import re
 import sys
 import time
 import traceback
 from datetime import datetime
 from pathlib import Path
 
+import requests
+
 from cqu_jwc.config.config import config
+from cqu_jwc.version import __version__
 
 ERROR_COUNT = 0
 
@@ -61,3 +65,15 @@ def check_user():
             exit()
         config.dump()
     return config["user_info"]["username"], config["user_info"]["password"]
+
+
+def check_update(project_name):
+    content = requests.get(f"https://pypi.org/project/{project_name}/").content.decode()
+    latest_version = re.findall(project_name + r" \d{1,2}\.\d{1,2}\.\d{1,2}", content)[
+        0
+    ].lstrip(project_name + " ")
+    if latest_version.split(".") > __version__.split("."):
+        log(
+            f"{project_name}的最新版本为{latest_version}，当前安装的是{__version__}，建议使用`pip install {project_name} -U`来升级",
+            warning=True,
+        )
