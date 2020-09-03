@@ -44,7 +44,7 @@ def console_main():
 
         :return: Namespace with parsed arguments.
         """
-        parser = argparse.ArgumentParser(prog="cj", description="第三方 重庆大学 成绩查询", )
+        parser = argparse.ArgumentParser(prog="cqu-cj", description="第三方 重庆大学 成绩查询", )
 
         parser.add_argument(
             "-v",
