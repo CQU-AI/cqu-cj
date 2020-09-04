@@ -18,8 +18,8 @@ def main():
     }
     data = parse.urlencode(
         {
-            "username": config['user_info']['username'],
-            "password": config['user_info']['password'],
+            "username": config["user_info"]["username"],
+            "password": config["user_info"]["password"],
             "submit1.x": 36,
             "submit1.y": 16,
         }
@@ -31,12 +31,15 @@ def main():
     # Get grades
     page = session.get("http://oldjw.cqu.edu.cn:8088/score/sel_score/sum_score_sel.asp")
 
-    pd.read_html(page.content.decode('gbk'))[1].to_csv(config['output']['path'], index=None, header=None)
+    pd.read_html(page.content.decode("gbk"))[1].to_csv(
+        config["output"]["path"], index=None, header=None
+    )
     log(f"已成功导出成绩到{config['output']['path']}")
 
 
 def console_main():
     import argparse
+
     check_output_path()
 
     def parse_args() -> argparse.Namespace:
@@ -54,10 +57,7 @@ def console_main():
             help="显示版本号",
         )
         parser.add_argument(
-            "-c",
-            "--config_path",
-            help="查询配置文件路径",
-            action="store_true",
+            "-c", "--config_path", help="查询配置文件路径", action="store_true",
         )
         parser.add_argument(
             "-r", "--reset", help="重置配置项", action="store_true",
@@ -77,11 +77,7 @@ def console_main():
             default=config["user_info"]["password"],
         )
         parser.add_argument(
-            "-o",
-            "--output",
-            help="成绩输出路径",
-            type=str,
-            default=config['output']['path'],
+            "-o", "--output", help="成绩输出路径", type=str, default=config["output"]["path"],
         )
 
         return parser.parse_args()
@@ -99,6 +95,6 @@ def console_main():
     main()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     check_output_path()
     main()

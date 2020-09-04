@@ -14,16 +14,16 @@ ERROR_COUNT = 0
 
 
 def check_output_path():
-    if config['output']['path'] is None:
+    if config["output"]["path"] is None:
         flag = False
         for i in ["Desktop", "桌面", "desktop"]:
             if (Path.home() / i).is_dir():
                 flag = True
                 break
         if flag:
-            config['output']['path'] = Path.home() / i / "成绩.csv"
+            config["output"]["path"] = str(Path.home() / i / "成绩.csv")
         else:
-            config['output']['path'] = Path("./成绩.csv").absolute()
+            config["output"]["path"] = str(Path("./成绩.csv").absolute())
 
 
 def exit():
@@ -56,7 +56,7 @@ def check_user():
             config["user_info"]["username"] is None
             or config["user_info"]["password"] is None
     ):
-        print("未找到有效的帐号和密码，请输入你的帐号和密码，它们将被保存在你的电脑上以备下次使用")
+        print("未找到有效的帐号和密码，请输入你的帐号和密码(一般是身份证后六位)，它们将被保存在你的电脑上以备下次使用")
         try:
             config["user_info"]["username"] = input("帐号>>>")
             config["user_info"]["password"] = input("密码>>>")
@@ -69,10 +69,12 @@ def check_user():
 
 def check_update(project_name):
     try:
-        content = requests.get(f"https://pypi.org/project/{project_name}/").content.decode()
-        latest_version = re.findall(project_name + r" \d{1,2}\.\d{1,2}\.\d{1,2}", content)[
-            0
-        ].lstrip(project_name + " ")
+        content = requests.get(
+            f"https://pypi.org/project/{project_name}/"
+        ).content.decode()
+        latest_version = re.findall(
+            project_name + r" \d{1,2}\.\d{1,2}\.\d{1,2}", content
+        )[0].lstrip(project_name + " ")
         if latest_version.split(".") > __version__.split("."):
             log(
                 f"{project_name}的最新版本为{latest_version}，当前安装的是{__version__}，建议使用`pip install {project_name} -U`来升级",
